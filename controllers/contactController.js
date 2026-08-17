@@ -64,7 +64,7 @@ export const getMessages = async (req, res) => {
       ];
     }
 
-    const messages = await MessageModel.find(query, { createdAt: -1 });
+    const messages = await MessageModel.find(query).sort({ createdAt: -1 });
 
     return res.status(200).json({
       success: true,
