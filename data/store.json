@@ -1,0 +1,55 @@
+{
+  "messages": [
+    {
+      "_id": "msg_1786970979594_pojync",
+      "name": "Priya Sharma",
+      "email": "priya.sharma@innovate.co",
+      "subject": "Front-End Developer Position",
+      "message": "Hello Kishan, we saw your portfolio and are interested in your web development profile.",
+      "status": "unread",
+      "createdAt": "2026-08-17T12:49:39.594Z",
+      "updatedAt": "2026-08-17T12:49:39.594Z"
+    },
+    {
+      "_id": "msg_1786970774731_k0pb7b",
+      "name": "Dev Test",
+      "email": "dev.test@example.com",
+      "subject": "Portfolio Connection",
+      "message": "Testing user MONGO_URI with portfolio database.",
+      "status": "unread",
+      "createdAt": "2026-08-17T12:46:14.731Z",
+      "updatedAt": "2026-08-17T12:46:14.732Z"
+    },
+    {
+      "_id": "msg_1786970366582_mjk18v",
+      "name": "Vikram Patel",
+      "email": "vikram.patel@creativestudio.in",
+      "subject": "E-commerce Platform Redesign",
+      "message": "Hi Kishan, we would like to hire you for a custom full-stack MERN e-commerce project. Please get back to us at your earliest convenience.",
+      "status": "unread",
+      "createdAt": "2026-08-17T12:39:26.582Z",
+      "updatedAt": "2026-08-17T12:39:26.583Z"
+    },
+    {
+      "_id": "msg_1786970153922_rgv0u0",
+      "name": "Rohan Sharma",
+      "email": "rohan.sharma@example.com",
+      "subject": "Full Stack Web Application Project",
+      "message": "Hello Kishan, we have an upcoming MERN stack project and would love to work with you. Please let us know your availability.",
+      "status": "unread",
+      "createdAt": "2026-08-17T12:35:53.922Z",
+      "updatedAt": "2026-08-17T12:35:53.922Z"
+    },
+    {
+      "_id": "msg_1786967155380_v41flt",
+      "name": "Alex Morgan",
+      "email": "alex.m@devnetwork.com",
+      "subject": "MERN Project Inquiry",
+      "message": "Hi Kishan, I saw your latest MERN stack projects. Excellent craftsmanship!",
+      "status": "unread",
+      "createdAt": "2026-08-17T11:45:55.380Z",
+      "updatedAt": "2026-08-17T11:45:55.381Z"
+    }
+  ],
+  "admins": []
+}
