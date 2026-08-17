@@ -25,6 +25,16 @@ app.use(
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
+// Ensure DB is connected for serverless invocations
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+  } catch (err) {
+    console.error('[DB Middleware Error]:', err.message);
+  }
+  next();
+});
+
 // Root Route
 app.get('/', (req, res) => {
   res.status(200).json({

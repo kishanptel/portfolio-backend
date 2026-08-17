@@ -22,28 +22,49 @@ if (!fs.existsSync(DATA_FILE)) {
   );
 }
 
+let cached = global.mongoose;
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
+}
+
 export const connectDB = async () => {
   const uri = process.env.MONGO_URI;
   const dbName = process.env.DATABASE_NAME || 'portfolio';
 
   if (!uri) {
-    console.log('[Database Notice]: No MONGO_URI provided in .env. Running in local JSON storage mode.');
+    console.log('[Database Notice]: No MONGO_URI provided. Running in local JSON storage mode.');
     isMongoConnected = false;
-    return;
+    return null;
+  }
+
+  if (cached.conn && mongoose.connection.readyState === 1) {
+    isMongoConnected = true;
+    return cached.conn;
+  }
+
+  if (!cached.promise) {
+    const opts = {
+      dbName: dbName,
+      serverSelectionTimeoutMS: 8000,
+    };
+    cached.promise = mongoose.connect(uri, opts).then((m) => {
+      isMongoConnected = true;
+      console.log(`[MongoDB Connected]: ${m.connection.host} / Database: ${m.connection.name}`);
+      return m;
+    });
   }
 
   try {
-    const conn = await mongoose.connect(uri, {
-      dbName: dbName,
-      serverSelectionTimeoutMS: 5000,
-    });
+    cached.conn = await cached.promise;
     isMongoConnected = true;
-    console.log(`[MongoDB Connected]: ${conn.connection.host} / Database: ${conn.connection.name}`);
   } catch (error) {
+    cached.promise = null;
     isMongoConnected = false;
     console.error(`[MongoDB Connection Error]: ${error.message}`);
     console.log(`[Database Notice]: Running in resilient local JSON storage mode.`);
   }
+
+  return cached.conn;
 };
 
 export const getDbStatus = () => isMongoConnected;
